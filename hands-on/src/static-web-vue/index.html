@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">    <meta charset="utf-8">
+    <style>
+        [v-cloak] { display: none; }
+    </style>
+    <title>Serverless To-Do App Sample</title>
+</head>
+<body>
+<div id="app" v-cloak>
+    <v-app>
+        <v-list subheader two-line>
+            <v-subheader>
+                My To-Do List
+                <v-spacer></v-spacer>
+                <v-btn color="blue lighten-2" dark @click.stop="newDialog = true">New</v-btn>
+            </v-subheader>
+            
+            <v-list-tile v-for="(item, index) in items"
+                        v-bind:item="item"
+                        v-bind:key="item.id"
+                        @click="">
+                <v-list-tile-action>
+                    <v-checkbox v-model="item.isChecked" @change="onChangeCheckbox(item)"></v-checkbox>
+                </v-list-tile-action>
+        
+                <v-list-tile-content @click="">
+                    <v-list-tile-title>{{item.title}}</v-list-tile-title>
+                    <v-list-tile-sub-title>{{item.content}}</v-list-tile-sub-title>
+                </v-list-tile-content>
+
+                <v-list-tile-action>
+                    <v-btn small color="red error" @click="onClickDeleteButton(item, index)">Delete</v-btn>
+                </v-list-tile-action>
+            </v-list-tile>
+        </v-list>
+
+        <v-dialog v-model="newDialog" width="500">
+            <v-card>
+                <v-card-title>
+                    <span class="headline">New</span>
+                </v-card-title>
+                <v-card-text>
+                    <v-form>
+                        <v-text-field v-model="newTitle" label="Title" hint="to-do title" :rules="titleRules" required></v-text-field>
+                        <v-text-field v-model="newContent" label="Content" hint="to-do description" :rules="titleRules" required></v-text-field>
+                    </v-form>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" flat @click="newDialog = false">Close</v-btn>
+                    <v-btn color="blue darken-1" flat @click="onClickNewSave">Save</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-dialog v-model="deleteDialog" width="500">
+            <v-card>
+                <v-card-title>
+                    <span class="headline">Delete</span>
+                </v-card-title>
+                <v-card-text>
+                    <p>Are you sure you want to delete this item?</p>
+                    <dl>
+                        <dt>{{ deleteTargetItem && deleteTargetItem.title }}</dt>
+                        <dd>{{ deleteTargetItem && deleteTargetItem.content }}</dd>
+                    </dl>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" flat @click="onClickDeleteCancel">Cancel</v-btn>
+                    <v-btn color="red darken-1" flat @click="onClickDeleteOK">OK</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+    </v-app>
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+<script src="js/script.js"></script>
+</body>
+</html>
