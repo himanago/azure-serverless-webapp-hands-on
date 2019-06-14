@@ -1,4 +1,4 @@
-const apiUrl = 'https://testserverlesswebappvue-funcapp.azurewebsites.net/todo';
+const apiUrl = '{YOUR API URL}';
 
 new Vue({
     el: '#app',

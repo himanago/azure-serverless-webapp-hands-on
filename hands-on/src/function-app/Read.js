@@ -2,7 +2,7 @@ module.exports = async function (context, req) {
     if (req.query.id) {
         // IDで絞り込み
         const todo = context.bindings.inputDocument
-            .filter(elm => elm.id === req.query.id)
+            .filter(elm => elm.id === req.query.id && !elm.isDeleted)
             .map(elm => {
                 return {
                     id: elm.id,
@@ -10,7 +10,7 @@ module.exports = async function (context, req) {
                     content: elm.content,
                     isChecked: elm.isChecked
                 };
-            })[0];
+            });
         
         if (todo) {
             // 成功（200）
@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
         // 一覧
         context.res = {
             status: 200,
-            body: context.bindings.inputDocument.map(elm => {
+            body: context.bindings.inputDocument.filter(elm => !elm.isDeleted).map(elm => {
                 return {
                     id: elm.id,
                     title: elm.title,
