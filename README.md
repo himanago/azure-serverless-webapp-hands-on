@@ -4,9 +4,9 @@ Azure Serverless Web App Hands On (Azure Functions + Cosmos DB + Blob Storage + 
 ## ハンズオンの内容
 本ハンズオンは、次のステップで実施します。
 
-- [STEP1 Azure Cosmos DBアカウント・コンテナー作成](step1-cosmosdb/README.md)
-- [STEP2 Azure FunctionsでのAPI作成](step2-functionapp/README.md)
-- [STEP3 Azure Blob Storageでの静的Webサイトホスティング](step3-blobstorage/README.md)
+- [STEP1 Azure Cosmos DBアカウント・コンテナー作成](hands-on/step1-cosmosdb/README.md)
+- [STEP2 Azure FunctionsでのAPI作成](hands-on/step2-functionapp/README.md)
+- [STEP3 Azure Blob Storageでの静的Webサイトホスティング](hands-on/step3-blobstorage/README.md)
 
 ## 事前に準備が必要なもの
 
