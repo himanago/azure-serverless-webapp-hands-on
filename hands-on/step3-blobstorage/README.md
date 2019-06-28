@@ -78,4 +78,6 @@ const apiUrl = 'https://todo-rest-api.azurewebsites.net/todo';
 
 新規作成、チェックボックスのON/OFF、削除がすべて動けば成功です。
 
+予期せぬ課金が発生しないよう、リソース類を削除するのを忘れないようにしましょう。
+
 お疲れさまでした！
