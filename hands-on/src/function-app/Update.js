@@ -12,22 +12,30 @@ module.exports = async function (context, req) {
                 };
             })[0];
 
-        context.bindings.outputDocument = JSON.stringify({
-            id: req.query.id,
-            title: req.body.title || todo.title,
-            content: req.body.content || todo.content,
-            isChecked: req.body.isChecked,
-        });
+        if (todo) {
+            context.bindings.outputDocument = JSON.stringify({
+                id: req.query.id,
+                title: req.body.title || todo.title,
+                content: req.body.content || todo.content,
+                isChecked: req.body.isChecked,
+            });
 
-        // 成功（200）
-        context.res = {
-            status: 200
-        };
+            // 成功（200）
+            context.res = {
+                status: 200
+            };
+        } else {
+            // 失敗（404）
+            context.res = {
+                status: 404,
+                body: "Not Found."
+            };
+        }
     } else {
-        // 失敗（404）
+        // 失敗（400）
         context.res = {
             status: 404,
-            body: "Not Found."
+            body: "Bad Request."
         };
     }
 };

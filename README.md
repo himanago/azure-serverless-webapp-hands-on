@@ -12,3 +12,9 @@ Azure Serverless Web App Hands On (Azure Functions + Cosmos DB + Blob Storage + 
 
 - ChromeやFirefox、Edgeなどのメジャーなモダンブラウザが動作するPCまたはMac
 - 有効なAzureアカウントおよびサブスクリプション
+
+## 注意点
+
+- 作成するアプリは認証などを特に行わないため、あくまでも学習用教材として使用してください。
+- Function App、Web画面用のソースコードは（ほぼ）完成済みのものを使用します。
+- ハンズオンがすべて終わったらリソースを削除しましょう。特にCosmos DBは放っておくと多くの課金が発生してしまいます。

@@ -12,24 +12,32 @@ module.exports = async function (context, req) {
                 };
             })[0];
 
-        // 論理削除
-        context.bindings.outputDocument = JSON.stringify({
-            id: req.query.id,
-            title: todo.title,
-            content: todo.content,
-            isChecked: todo.isChecked,
-            isDeleted: true,
-        });
+        if (todo) {
+            // 論理削除
+            context.bindings.outputDocument = JSON.stringify({
+                id: req.query.id,
+                title: todo.title,
+                content: todo.content,
+                isChecked: todo.isChecked,
+                isDeleted: true,
+            });
 
-        // 成功（200）
-        context.res = {
-            status: 200
-        };
+            // 成功（200）
+            context.res = {
+                status: 200
+            };
+        } else {
+            // 失敗（404）
+            context.res = {
+                status: 404,
+                body: "Not Found."
+            };
+        }
     } else {
-        // 失敗（404）
+        // 失敗（400）
         context.res = {
             status: 404,
-            body: "Not Found."
+            body: "Bad Request."
         };
     }
 };
