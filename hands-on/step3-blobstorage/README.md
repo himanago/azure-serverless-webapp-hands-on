@@ -1,4 +1,4 @@
-# Azure Blob Storageでの静的Webサイトホスティング
+# STEP3 Azure Blob Storageでの静的Webサイトホスティング
 
 最後に、Azure Blob Storageの静的Webサイトホスティング機能を使ってWebサイトの公開をします。
 公開するのは、Vue.jsとVuetifyを使って作った簡易アプリケーションです。
